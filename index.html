@@ -1,283 +1,54 @@
-:root {
-    --root-color: rgb(245, 58, 161);
-    --root-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-    --light-color: rgba(245, 58, 161, 0.144);
-}
+<!DOCTYPE html>
+<html lang="en">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: all 0.2s ease;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>butterfly | app</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-html,
-body {
-    width: 100%;
-    height: 100%;
-    /* border: 2px dashed red; */
-}
+<body>
+    <header>
+        <div class="profile">
+            <h2>B</h2>
+        </div>
+        <div class="user-details">
+            <h4>butterfly app</h4>
+            <h6>dont't forget to drink water.</h6>
+        </div>
+        <button class="refresh" onclick="window.location.reload();">refresh</button>
+        <div class="settings">
+            <h2 onclick="show_settings();">⚙</h2>
+        </div>
+        <div class="settings_area">
+            <h5>theme</h5>
+            <span style="background-color: rgb(226, 62, 62);" onclick="change_theme(event.target);"></span>
+            <span style="background-color: rgb(11, 158, 72);" onclick="change_theme(event.target);"></span>
+            <span style="background-color: rgb(5, 178, 184);" onclick="change_theme(event.target);"></span>
+            <span style="background-color: rgba(8, 13, 32, 0.89);" onclick="change_theme(event.target);"></span>
+        </div>
+    </header>
+    <main>
+    </main>
+    <footer>
+        <div class="messsage">
+            <div id="file"><input type="file" accept="image/*,video/*" onchange="preview()"></div>
+            <input type="text" placeholder="type message ..." id="message">
+            <div class="preview"><button>×</button></div>
+        </div>
+        <button class="send-btn" onclick="send();"></button>
+    </footer>
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+    <div class="login">
+        <h2>butterfly</h2>
+        <p>please, drink water.</p>
+        <img src="assets/butterfly.png">
+        <input type="password" placeholder="login key" id="key">
+        <button id="login-btn" onclick="login();">login</button>
+    </div>
 
-header {
-    height: 54px;
-    background-color: var(--root-color);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 5px 2px 5px gray;
-    border-radius: 0 0 8px 8px;
-    gap: 8px;
-    padding: 4px;
-    position: relative;
-}
+    <script src="script.js"></script>
+</body>
 
-header .user-details{
-flex-grow: 1;
-}
-
-header .profile{
-    width: 34px;
-    height: 34px;
-    border: 1px solid white;
-    border-radius: 50%;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-header .profile h2{
-    color: var(--root-color);
-}
-
-header .refresh{
-    font-weight: bold;
-    padding: 4px;
-    color: var(--root-color);
-    border: none;
-    background-color: white;
-    border-radius: 4px;
-}
-header .refresh:active{
-    scale: 0.9;
-}
-
-header .settings{
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
-    position: relative;
-}
-header .settings:active{
-    scale: 1.1;
-}
-
-header .settings_area{
-    color: var(--root-color);
-    text-align: center;
-    border: 2px solid var(--root-color);
-    width: 300px;
-    position: absolute;
-    right: 8px;
-    top: 110%;
-    background-color: white;
-    padding: 8px;
-    border-radius: 8px;
-    display: none;
-}
-header .settings_area span{
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    border-radius: 50%;
-    margin: 5px;
-}
-
-header .settings_area span:active{
-    scale: 0.9;
-}
-
-
-main {
-    flex-grow: 1;
-    padding: 8px;
-    overflow-y: auto;
-}
-
-main div{
-    border: 2px solid var(--root-color);
-    border-radius: 0 8px 8px 8px;
-    width: 88%;
-    padding: 8px;
-    background-color: var(--light-color);
-    margin-bottom: 8px;
-}
-
-main div h5{
-    color: rgb(255, 0, 76);
-}
-main div h6{
-    text-align: right;
-    margin-top: 4px;
-}
-
-main div img{
-    width: 100%;
-    background-color: white;
-    border-radius: 8px;
-    margin-top: 8px;
-}
-
-main div video{
-    width: 100%;
-    background-color: white;
-    border-radius: 8px;
-    margin-top: 8px;
-}
-
-footer {
-    height: 54px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 99%;
-    padding: 4px;
-    gap: 4px;
-    position: relative;
-    padding-left: 8px;
-}
-
-footer .messsage{
-    flex-grow: 1;
-    height: 90%;
-    border-radius: 8px;
-    padding: 2px 8px;
-    background-color: white;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    box-shadow: var(--root-shadow);
-    position: relative;
-}
-
-footer .messsage #file{
-    width: 24px;
-    height: 24px;
-    background: url(assets/file-icon.png);
-    background-size: contain;
-    background-position: center;
-}
-footer .messsage #file input{
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    padding-left: 4px;
-}
-footer .messsage #message{
-    flex-grow: 1;
-    height: 100%;
-    background-color: transparent;
-    border: none;
-    outline: none;
-}
-
-
-footer .messsage .preview{
-    width: 100%;
-    position: absolute;
-    background-color: white;
-    left: 0;
-    bottom: 0;
-    max-height: 500px;
-    box-shadow: var(--root-shadow);
-    display: none;
-}
-
-footer .messsage .preview button{
-    width: 100%;
-    position: absolute;
-    height: 40px;
-    border: none;
-    font-size: xx-large;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(128, 128, 128, 0.342);
-    color: red;
-}
-
-footer .send-btn{
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: url(assets/send-icon.png);
-    background-size: contain;
-    background-position: center;
-    box-shadow: var(--root-shadow);
-    padding: 4px;
-    background-repeat: no-repeat;
-
-}
-footer .send-btn:active{
-    scale: 0.9;
-}
-
-.login{
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--root-color);
-    /* display: none; */
-}
-
-.login img{
-    width: 50%;
-}
-
-.login input{
-    width: 70%;
-    height: 48px;
-    padding-left: 1rem;
-    font-weight: bold;
-    color: var(--root-color);
-}
-
-.login button{
-    width: 120px;
-    height: 44px;
-    margin-top: 2rem;
-    background-color: var(--root-color);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-}
-.login button:active{
-    scale: 0.9;
-}
+</html>
