@@ -1,7 +1,7 @@
 :root {
-    --root-color: rgb(129, 8, 75);
+    --root-color: rgb(245, 58, 161);
     --root-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-    --light-color: rgba(129, 8, 75, 0.336);
+    --light-color: rgba(245, 58, 161, 0.144);
 }
 
 * {
