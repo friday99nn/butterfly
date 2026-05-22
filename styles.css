@@ -253,7 +253,7 @@ footer .send-btn:active{
     justify-content: center;
     align-items: center;
     color: var(--root-color);
-    display: none;
+    /* display: none; */
 }
 
 .login img{
