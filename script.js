@@ -123,6 +123,7 @@ function login() {
     }
 
     console.log("invalid key.")
+    key.style.border = "2px solid red";
 
     document.documentElement.style.setProperty("--root-color", localStorage.getItem("root-color"));
     document.documentElement.style.setProperty("--light-color", localStorage.getItem("light-color"));
