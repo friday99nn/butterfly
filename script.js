@@ -132,33 +132,54 @@ function login() {
 function load_message(message) {
     let main = document.querySelector("main");
     let div = document.createElement("div");
+
     let h5 = document.createElement("h5");
     h5.innerText = message.username;
+
     let h6 = document.createElement("h6");
     h6.innerText = message.info;
 
     div.appendChild(h5);
+
     if (message.message) {
         let p = document.createElement("p");
         p.innerText = message.message;
         div.appendChild(p);
-
     }
+
     if (message.img) {
         let img = document.createElement("img");
-        img.src = message.img;
+
+        img.src =
+            "https://friday99nn.pythonanywhere.com/butterfly/media/" +
+            encodeURIComponent(message.img);
+
         div.appendChild(img);
+
+        console.log(img.src);
     }
+
     if (message.video) {
         let video = document.createElement("video");
-        video.src = message.video;
+
+        video.src =
+            "https://friday99nn.pythonanywhere.com/butterfly/media/" +
+            encodeURIComponent(message.video);
+
         video.controls = true;
+
         div.appendChild(video);
     }
+
     if (message.audio) {
         let audio = document.createElement("audio");
-        audio.src = message.video;
+
+        audio.src =
+            "https://friday99nn.pythonanywhere.com/butterfly/media/" +
+            encodeURIComponent(message.audio);
+
         audio.controls = true;
+
         div.appendChild(audio);
     }
 
@@ -166,8 +187,9 @@ function load_message(message) {
 
     if (message.username == username) {
         div.style.justifySelf = "flex-end";
-        div.style.borderRadius = "8px 0 8px 8px"
+        div.style.borderRadius = "8px 0 8px 8px";
     }
+
     main.appendChild(div);
 }
 
@@ -259,31 +281,31 @@ function sync() {
         .then(res => res.json())
         .then(data => {
             let chat = data.chat
-            if(chat.length == count) return;
+            if (chat.length == count) return;
             count = 0;
             let main = document.querySelector("main")
             main.innerHTML = "";
             chat.forEach(message => {
-                if(message.message){
+                if (message.message) {
                     load_message({
                         "username": message.username,
-                        "message" : message.message,
+                        "message": message.message,
                         "info": message.info
                     })
                     count = count + 1;
                 }
-                if(message.img){
+                if (message.img) {
                     load_message({
                         "username": message.username,
-                        "img" : message.img,
+                        "img": message.img,
                         "info": message.info
                     })
                     count = count + 1;
                 }
-                if(message.video){
+                if (message.video) {
                     load_message({
                         "username": message.username,
-                        "video" : message.video,
+                        "video": message.video,
                         "info": message.info
                     })
                     count = count + 1;
