@@ -128,7 +128,7 @@ main div{
     padding: 8px;
     background-color: var(--light-color);
     margin-bottom: 8px;
-    align-self: flex-end;
+    align-self: flex-start;
 }
 
 main div h5{
