@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>butterfly | app</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="profile">
+            <h2>M</h2>
+        </div>
+        <div class="user-details">
+            <h4>butterfly app</h4>
+            <h6>please, drink water.</h6>
+        </div>
+        <button class="refresh" onclick="window.location.reload();">refresh</button>
+        <div class="settings">
+            <h2 onclick="show_settings();">⚙</h2>
+        </div>
+        <div class="settings_area">
+            <h5>theme</h5>
+            <span style="background-color: rgb(226, 62, 62);" onclick="change_theme(event.target);"></span>
+            <span style="background-color: rgb(11, 158, 72);" onclick="change_theme(event.target);"></span>
+            <span style="background-color: rgb(5, 178, 184);" onclick="change_theme(event.target);"></span>
+            <span style="background-color: rgba(8, 13, 32, 0.89);" onclick="change_theme(event.target);"></span>
+        </div>
+    </header>
+    <main>
+    </main>
+    <footer>
+        <div class="messsage">
+            <div id="file"><input type="file" accept="image/*,video/*" onchange="preview()"></div>
+            <input type="text" placeholder="type message ..." id="message">
+            <div class="preview"><button>×</button></div>
+        </div>
+        <button class="send-btn" onclick="send();"></button>
+    </footer>
+
+    <div class="login">
+        <h2>butterfly</h2>
+        <p>please, drink water.</p>
+        <img src="assets/butterfly.png">
+        <input type="password" placeholder="login key" id="key">
+        <button id="login-btn" onclick="login();">login</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
